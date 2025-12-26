@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rasul Mammadov | QA Automation Tester</title>
     <style>
         :root { --main-blue: #0077b5; --light-bg: #f3f6f8; --dark-text: #2d3436; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--light-bg); color: var(--dark-text); }
-        header { background: var(--main-blue); color: white; padding: 60px 20px; text-align: center; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--light-bg); color: var(--dark-text); transition: 0.3s; }
+        header { background: var(--main-blue); color: white; padding: 60px 20px; text-align: center; position: relative; }
+        
+        .lang-switch { position: absolute; top: 20px; right: 20px; }
+        .lang-btn { background: white; color: var(--main-blue); border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; margin-left: 5px; }
+        
         .container { max-width: 850px; margin: -40px auto 40px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         
-        /* Kişiselleştirilmiş Başlık Ayarın */
+        /* Özel CSS isteğin: friends-content h3 ayarları */
         .friends-content h3 {
             margin-top: 60px;
             margin-bottom: 15px;
@@ -24,42 +28,84 @@
         .skill-tag { background: #e1e9ee; color: #004182; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.9em; }
         .edu-item { border-left: 3px solid var(--main-blue); padding-left: 15px; margin: 15px 0; }
         .contact-btn { display: inline-block; background: var(--main-blue); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
-        .contact-btn:hover { background: #005a8a; transform: translateY(-2px); }
+        
+        /* Dil Gizleme */
+        .lang-en { display: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Rasul Mammadov</h1>
-    <p>QA Automation & Manual Tester</p>
+    <div class="lang-switch">
+        <button class="lang-btn" onclick="setLanguage('az')">AZ</button>
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    </div>
+    <h1 id="main-name">Rasul Mammadov</h1>
+    <p id="main-title" class="lang-az">QA Automation & Manual Tester</p>
+    <p id="main-title-en" class="lang-en">QA Automation & Manual Tester</p>
 </header>
 
 <div class="container">
     <section class="friends-content">
-        <h3>Hakkımda</h3>
-        <p>Yazılım kalitesini en üst düzeye çıkarmaya odaklanmış bir QA Tester olarak; Manuel ve Otomasyon test süreçlerinde deneyim sahibiyim. Veri tabanı doğrulama süreçleri için SQL kullanarak uçtan uca test senaryoları geliştiriyorum.</p>
+        <div class="lang-az">
+            <h3>Haqqımda</h3>
+            <p>Yazılım keyfiyyətini maksimuma çatdırmağa fokuslanmış QA Tester olaraq; Manual və Avtomatlaşdırılmış (Automation) test proseslərində təcrübəyə sahibəm. Məlumat bazasının yoxlanılması üçün SQL istifadə edərək kompleks test ssenariləri hazırlayıram.</p>
 
-        <h3>Yeteneklerim</h3>
-        <div class="skill-group">
-            <span class="skill-tag">Manual Testing</span>
-            <span class="skill-tag">Test Automation</span>
-            <span class="skill-tag">SQL (Database Testing)</span>
-            <span class="skill-tag">Bug Reporting</span>
-            <span class="skill-tag">SDLC / STLC</span>
-            <span class="skill-tag">GitHub</span>
+            <h3>Bacarıqlar</h3>
+            <div class="skill-group">
+                <span class="skill-tag">Manual Test</span>
+                <span class="skill-tag">Test Automation</span>
+                <span class="skill-tag">SQL (Database Testing)</span>
+                <span class="skill-tag">Bug Reporting</span>
+                <span class="skill-tag">SDLC / STLC</span>
+                <span class="skill-tag">GitHub</span>
+            </div>
+
+            <h3>Təhsil</h3>
+            <div class="edu-item">
+                <strong>[UNİVERSİTETİN ADI]</strong><br>
+                <span>[FAKÜLTƏ/İXTİSAS]</span>
+            </div>
+
+            <a href="YOUR_LINKEDIN_URL" class="contact-btn">LinkedIn ilə əlaqə</a>
         </div>
 
-        <h3>Eğitim</h3>
-        <div class="edu-item">
-            <strong>[ÜNİVERSİTE ADINI BURAYA YAZ]</strong><br>
-            <span>[BÖLÜMÜNÜ BURAYA YAZ]</span>
-        </div>
+        <div class="lang-en">
+            <h3>About Me</h3>
+            <p>As a QA Tester focused on maximizing software quality, I have experience in Manual and Automation testing processes. I develop end-to-end test scenarios using SQL for database verification.</p>
 
-        <h3>İletişim</h3>
-        <p>Projelerimi incelemek veya iş birliği yapmak için benimle bağlantı kurabilirsiniz.</p>
-        <a href="https://www.linkedin.com/in/RASUL-LINKEDIN-ADIN" target="_blank" class="contact-btn">LinkedIn'de Bağlantı Kur</a>
+            <h3>Skills</h3>
+            <div class="skill-group">
+                <span class="skill-tag">Manual Testing</span>
+                <span class="skill-tag">Test Automation</span>
+                <span class="skill-tag">SQL (Database Testing)</span>
+                <span class="skill-tag">Bug Reporting</span>
+                <span class="skill-tag">SDLC / STLC</span>
+                <span class="skill-tag">GitHub</span>
+            </div>
+
+            <h3>Education</h3>
+            <div class="edu-item">
+                <strong>[UNIVERSITY NAME]</strong><br>
+                <span>[MAJOR/DEPARTMENT]</span>
+            </div>
+
+            <a href="YOUR_LINKEDIN_URL" class="contact-btn">Connect on LinkedIn</a>
+        </div>
     </section>
 </div>
+
+<script>
+    function setLanguage(lang) {
+        if (lang === 'az') {
+            document.querySelectorAll('.lang-az').forEach(el => el.style.display = 'block');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+        } else {
+            document.querySelectorAll('.lang-az').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
+        }
+    }
+</script>
 
 </body>
 </html>
