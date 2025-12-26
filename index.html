@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rasul Mammadov | QA Automation Tester</title>
+    <!-- Google Fonts - Azərbaycan şrift dəstəyi üçün Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Animasiya Kitabxanası -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -15,26 +17,26 @@
         }
         
         body { 
-            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            font-family: 'Montserrat', sans-serif; /* Şrift yeniləndi */
             margin: 0; 
             background: var(--light-bg); 
             color: var(--dark-text); 
             overflow-x: hidden;
         }
 
-        /* 1. QAT: Başlığın Arxa Fonu (Ən arxa) */
+        /* 1. QAT: Başlığın Arxa Fonu */
         .header-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 500px; /* Header hündürlüyü qədər */
+            height: 500px;
             background: linear-gradient(135deg, #001f3f, #0077b5);
             z-index: 0;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Bir az əyilmiş müasir kəsim */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
-        /* 2. QAT: Zərrəciklər (Fonun üstündə) */
+        /* 2. QAT: Zərrəciklər */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -45,13 +47,13 @@
             pointer-events: none;
         }
 
-        /* 3. QAT: Məzmun (Ən öndə) */
+        /* 3. QAT: Məzmun */
         header { 
             position: relative; 
-            padding: 100px 20px 150px; /* Aşağı boşluq artırıldı */
+            padding: 100px 20px 150px;
             text-align: center; 
-            z-index: 2; /* Canvas-ın üstündə */
-            background: transparent; /* Şəffaf olsun ki, arxadakı canvas görünsün */
+            z-index: 2;
+            background: transparent;
         }
 
         .header-content {
@@ -59,7 +61,7 @@
         }
 
         .header-content h1, .header-content p {
-            color: white; /* Header yazıları mütləq ağ olsun */
+            color: white;
             text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
@@ -75,12 +77,13 @@
             margin-left: 5px; 
             transition: 0.3s;
             backdrop-filter: blur(5px);
+            font-family: inherit;
         }
         .lang-btn:hover { background: white; color: var(--main-blue); }
 
         .container { 
             max-width: 850px; 
-            margin: -80px auto 40px; /* Yuxarı sürüşdürdüm ki, header-in içinə girsin */
+            margin: -80px auto 40px; 
             background: rgba(255, 255, 255, 0.9); 
             padding: 40px; 
             border-radius: 12px; 
@@ -98,6 +101,7 @@
             border-bottom: 2px solid #eee;
             padding-bottom: 8px;
             position: relative;
+            font-weight: 700;
         }
 
         .friends-content h3::after {
@@ -121,6 +125,7 @@
             font-size: 0.9em; 
             transition: 0.4s ease; 
             border: 1px solid transparent;
+            cursor: pointer;
         }
         .skill-tag:hover { 
             transform: translateY(-5px) scale(1.05); 
@@ -156,6 +161,7 @@
             box-shadow: 0 4px 15px rgba(0,119,181,0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-family: inherit;
         }
         .contact-btn:hover { 
             background: var(--dark-blue); 
@@ -173,24 +179,85 @@
             position: relative;
             z-index: 2;
         }
+
+        /* --- MODAL STİLLƏRİ --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 30px;
+            border: 1px solid #888;
+            width: 85%; 
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideUp 0.3s;
+            text-align: center;
+        }
+
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #modal-title {
+            color: var(--main-blue);
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        #modal-desc {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
     </style>
 </head>
 <body>
 
-<!-- 1. QAT: Mavi Arxa Fon -->
 <div class="header-bg"></div>
-
-<!-- 2. QAT: Canvas -->
 <canvas id="particle-canvas"></canvas>
 
-<!-- 3. QAT: Məzmun -->
+<div id="skill-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title">Başlıq</h2>
+        <p id="modal-desc">İzahat</p>
+    </div>
+</div>
+
 <header>
     <div class="lang-switch">
         <button class="lang-btn" onclick="setLanguage('az')">AZ</button>
         <button class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
     <div class="header-content">
-        <h1 data-aos="fade-down" style="font-size: 3rem; margin-bottom: 0;">Rasul Mammadov</h1>
+        <h1 data-aos="fade-down" style="font-size: 3rem; margin-bottom: 0;">Rəsul Məmmədov</h1>
         <p class="lang-az" data-aos="fade-up" style="font-size: 1.2rem; opacity: 0.9;">QA Automation & Manual Tester</p>
         <p class="lang-en" data-aos="fade-up" style="font-size: 1.2rem; opacity: 0.9;">QA Automation & Manual Tester</p>
     </div>
@@ -198,20 +265,20 @@
 
 <div class="container" data-aos="fade-up" data-aos-delay="200">
     <section class="friends-content">
-        <!-- AZERBAIJANI CONTENT -->
         <div class="lang-az">
             <h3 data-aos="fade-right">Haqqımda</h3>
-            <p>Mən Rasul, proqram təminatının keyfiyyətinə (QA) fokuslanmış bir mütəxəssisəm. Manual və Automation test prosesləri üzrə dərin biliklərə sahibəm. SQL vasitəsilə verilənlər bazası testlərini həyata keçirir və sistemin qüsursuz işləməsini təmin edirəm.</p>
+            <p>Mən Rəsul, proqram təminatının keyfiyyətinə (QA) fokuslanmış bir mütəxəssisəm. Manual və Automation test prosesləri üzrə dərin biliklərə sahibəm. SQL vasitəsilə verilənlər bazası testlərini həyata keçirir və sistemin qüsursuz işləməsini təmin edirəm.</p>
 
             <h3 data-aos="fade-right">Texniki Bacarıqlar</h3>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">(Ətraflı məlumat üçün üzərinə klikləyin)</p>
             <div class="skill-group">
-                <span class="skill-tag" data-aos="zoom-in">Manual Testing</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="50">Automation Testing</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="100">SQL (Database Testing)</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="150">Bug Reporting</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="200">SDLC / STLC</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="250">API Testing</span>
-                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300">GitHub</span>
+                <span class="skill-tag" data-aos="zoom-in" onclick="openModal('Manual Testing', 'İstifadəçi gözü ilə proqramın test edilməsi. Test ssenariləri (Test Cases) hazırlanır və əl ilə icra edilir.')">Manual Testing</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="50" onclick="openModal('Automation Testing', 'Təkrarlanan testlərin kodlar və alətlər (Selenium, Cypress və s.) vasitəsilə avtomatik icra edilməsi.')">Automation Testing</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="100" onclick="openModal('SQL (Database Testing)', 'Verilənlər bazasındakı məlumatların düzgünlüyünü və bütövlüyünü yoxlamaq üçün sorğuların (queries) yazılması.')">SQL (Database Testing)</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="150" onclick="openModal('Bug Reporting', 'Tapılan xətaların (bug) Jira və ya bənzər alətlərdə detallı şəkildə sənədləşdirilməsi və izlənilməsi.')">Bug Reporting</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="200" onclick="openModal('SDLC / STLC', 'Proqram Təminatının Həyat Dövrü (SDLC) və Proqram Test Həyat Dövrü (STLC) proseslərinin mərhələlərinə bələdlik.')">SDLC / STLC</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="250" onclick="openModal('API Testing', 'Tətbiqlər arası əlaqəni təmin edən API-ların Postman kimi alətlərlə test edilməsi.')">API Testing</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300" onclick="openModal('GitHub', 'Versiya idarəetmə sistemi. Kodların və test skriptlərinin saxlanması, idarə edilməsi və komanda işi.')">GitHub</span>
             </div>
 
             <h3 data-aos="fade-right">Təhsil</h3>
@@ -225,20 +292,20 @@
             </div>
         </div>
 
-        <!-- ENGLISH CONTENT -->
         <div class="lang-en">
             <h3>About Me</h3>
             <p>I am Rasul, a QA specialist focused on software quality. I have expertise in Manual and Automation testing processes. I perform database verification using SQL and ensure seamless system performance.</p>
 
             <h3>Technical Skills</h3>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">(Click on skills for details)</p>
             <div class="skill-group">
-                <span class="skill-tag">Manual Testing</span>
-                <span class="skill-tag">Automation Testing</span>
-                <span class="skill-tag">SQL (Database Testing)</span>
-                <span class="skill-tag">Bug Reporting</span>
-                <span class="skill-tag">SDLC / STLC</span>
-                <span class="skill-tag">API Testing</span>
-                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag" onclick="openModal('Manual Testing', 'Testing software from a user perspective. Test cases are created and executed manually.')">Manual Testing</span>
+                <span class="skill-tag" onclick="openModal('Automation Testing', 'Using code and tools (like Selenium, Cypress) to execute repetitive tests automatically.')">Automation Testing</span>
+                <span class="skill-tag" onclick="openModal('SQL (Database Testing)', 'Writing queries to verify the accuracy and integrity of data within the database.')">SQL (Database Testing)</span>
+                <span class="skill-tag" onclick="openModal('Bug Reporting', 'Documenting and tracking found defects (bugs) in detail using tools like Jira.')">Bug Reporting</span>
+                <span class="skill-tag" onclick="openModal('SDLC / STLC', 'Knowledge of the phases in the Software Development Life Cycle (SDLC) and Software Testing Life Cycle (STLC).')">SDLC / STLC</span>
+                <span class="skill-tag" onclick="openModal('API Testing', 'Verifying that application programming interfaces (APIs) function correctly using tools like Postman.')">API Testing</span>
+                <span class="skill-tag" onclick="openModal('GitHub', 'Version control system. Storing, managing, and collaborating on code and test scripts.')">GitHub</span>
             </div>
 
             <h3>Education</h3>
@@ -255,7 +322,7 @@
 </div>
 
 <footer>
-    &copy; 2024 Rasul Mammadov. All rights reserved.
+    &copy; 2024 Rəsul Məmmədov. Bütün hüquqlar qorunur.
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -273,7 +340,25 @@
         AOS.refresh();
     }
 
-    // --- YENİLƏNMİŞ CANVAS MƏNTİQİ ---
+    const modal = document.getElementById("skill-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+
+    function openModal(title, desc) {
+        modalTitle.innerText = title;
+        modalDesc.innerText = desc;
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) closeModal();
+    }
+
+    // --- CANVAS PARTICLE ENGINE ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -300,14 +385,7 @@
             if (this.y < 0) this.y = canvas.height;
         }
         draw() {
-            // ƏGƏR zərrəcik yuxarıdadırsa (header-in içində) -> AĞ
-            // ƏGƏR aşağıdadırsa -> GÖY
-            // Artıq scroll-a yox, zərrəciyin Y koordinatına baxırıq
-            if (this.y < 500) {
-                 ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            } else {
-                 ctx.fillStyle = 'rgba(0, 119, 181, 0.6)';
-            }
+            ctx.fillStyle = this.y < 500 ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 119, 181, 0.6)';
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -317,9 +395,7 @@
     function createParticles() {
         particles = [];
         const particleCount = Math.min(Math.floor(window.innerWidth / 10), 100);
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
     }
 
     function animate() {
@@ -331,20 +407,10 @@
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
                 if (distance < 120) {
                     const opacity = 1 - distance / 120;
-                    
-                    // Xətlərin rəngini də yerləşdiyi yerə görə təyin et
-                    // Ortalamanı götürürük (iki nöqtənin ortası)
                     const midY = (particles[i].y + particles[j].y) / 2;
-
-                    if (midY < 500) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.5})`;
-                    } else {
-                        ctx.strokeStyle = `rgba(0, 119, 181, ${opacity * 0.3})`;
-                    }
-
+                    ctx.strokeStyle = midY < 500 ? `rgba(255, 255, 255, ${opacity * 0.5})` : `rgba(0, 119, 181, ${opacity * 0.3})`;
                     ctx.lineWidth = 0.8;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -368,6 +434,4 @@
 
 </body>
 </html>
-
-
 
