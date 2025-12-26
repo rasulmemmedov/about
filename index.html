@@ -4,17 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rasul Mammadov | QA Tester Portfolio</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root { --main-blue: #0077b5; --light-bg: #f3f6f8; --dark-text: #2d3436; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background: var(--light-bg); color: var(--dark-text); transition: 0.3s; }
-        header { background: var(--main-blue); color: white; padding: 60px 20px; text-align: center; position: relative; }
         
-        .lang-switch { position: absolute; top: 20px; right: 20px; }
-        .lang-btn { background: white; color: var(--main-blue); border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; font-weight: bold; margin-left: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
-        .container { max-width: 850px; margin: -40px auto 40px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        
-        /* İstədiyiniz xüsusi CSS tənzimləmələri */
+        body { 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            background: var(--light-bg); 
+            color: var(--dark-text); 
+            overflow-x: hidden;
+        }
+
+        /* Arxa fon hərəkəti */
+        header { 
+            background: linear-gradient(-45deg, #0077b5, #00a0dc, #004182, #0077b5);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+            position: relative; 
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .lang-switch { position: absolute; top: 20px; right: 20px; z-index: 100; }
+        .lang-btn { 
+            background: white; color: var(--main-blue); border: none; 
+            padding: 8px 15px; cursor: pointer; border-radius: 5px; 
+            font-weight: bold; margin-left: 5px; transition: 0.3s;
+        }
+        .lang-btn:hover { transform: scale(1.1); background: #eee; }
+
+        .container { 
+            max-width: 850px; margin: -50px auto 40px; 
+            background: white; padding: 40px; border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            position: relative; z-index: 10;
+        }
+
+        /* Sənin xüsusi CSS tələblərin */
         .friends-content h3 {
             margin-top: 60px;
             margin-bottom: 15px;
@@ -25,11 +59,29 @@
         }
 
         .skill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
-        .skill-tag { background: #e1e9ee; color: #004182; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 0.9em; }
-        .edu-item { border-left: 3px solid var(--main-blue); padding-left: 15px; margin: 15px 0; }
-        .contact-btn { display: inline-block; background: var(--main-blue); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; margin-top: 20px; }
-        .contact-btn:hover { background: #005a8a; transform: translateY(-2px); }
         
+        .skill-tag { 
+            background: #e1e9ee; color: #004182; padding: 8px 18px; 
+            border-radius: 20px; font-weight: 600; font-size: 0.9em; 
+            transition: 0.3s; 
+        }
+        .skill-tag:hover { transform: translateY(-5px); background: var(--main-blue); color: white; }
+
+        .edu-item { 
+            border-left: 3px solid var(--main-blue); 
+            padding-left: 15px; margin: 15px 0; 
+            transition: 0.3s;
+        }
+        .edu-item:hover { background: #f9f9f9; padding-left: 20px; }
+
+        .contact-btn { 
+            display: inline-block; background: var(--main-blue); 
+            color: white; padding: 12px 35px; text-decoration: none; 
+            border-radius: 50px; font-weight: bold; transition: 0.4s; 
+            margin-top: 20px; box-shadow: 0 4px 15px rgba(0,119,181,0.3);
+        }
+        .contact-btn:hover { background: #005a8a; transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,119,181,0.5); }
+
         .lang-en { display: none; }
     </style>
 </head>
@@ -40,62 +92,65 @@
         <button class="lang-btn" onclick="setLanguage('az')">AZ</button>
         <button class="lang-btn" onclick="setLanguage('en')">EN</button>
     </div>
-    <h1>Rasul Mammadov</h1>
-    <p id="title-az" class="lang-az">QA Automation & Manual Tester</p>
-    <p id="title-en" class="lang-en">QA Automation & Manual Tester</p>
+    <h1 data-aos="fade-down">Rasul Mammadov</h1>
+    <p class="lang-az" data-aos="fade-up">QA Automation & Manual Tester</p>
+    <p class="lang-en" data-aos="fade-up">QA Automation & Manual Tester</p>
 </header>
 
-<div class="container">
+<div class="container" data-aos="zoom-in" data-aos-delay="200">
     <section class="friends-content">
         <div class="lang-az">
-            <h3>Haqqımda</h3>
-            <p>Mən Rasul, proqram təminatının keyfiyyətinə (QA) fokuslanmış bir mütəxəssisəm. Manual və Automation (Avtomatlaşdırılmış) test prosesləri üzrə biliklərə sahibəm. SQL vasitəsilə məlumat bazasının yoxlanılmasını həyata keçirir, STLC proseslərinə uyğun test ssenariləri hazırlayıram.</p>
+            <h3 data-aos="fade-right">Haqqımda</h3>
+            <p>Mən Rasul, proqram təminatının keyfiyyətinə (QA) fokuslanmış bir mütəxəssisəm. Manual və Automation (Avtomatlaşdırılmış) test prosesləri üzrə biliklərə sahibəm. SQL vasitəsilə məlumat bazasının yoxlanılmasını həyata keçirirəm.</p>
 
-            <h3>Bacarıqlar</h3>
+            <h3 data-aos="fade-right">Bacarıqlar</h3>
             <div class="skill-group">
-                <span class="skill-tag">Manual Testing</span>
-                <span class="skill-tag">Automation Testing</span>
-                <span class="skill-tag">SQL (Database Testing)</span>
-                <span class="skill-tag">Bug Reporting & Tracking</span>
-                <span class="skill-tag">SDLC / STLC</span>
-                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag" data-aos="flip-left">Manual Testing</span>
+                <span class="skill-tag" data-aos="flip-left" data-aos-delay="100">Automation Testing</span>
+                <span class="skill-tag" data-aos="flip-left" data-aos-delay="200">SQL (Database Testing)</span>
+                <span class="skill-tag" data-aos="flip-left" data-aos-delay="300">Bug Reporting</span>
+                <span class="skill-tag" data-aos="flip-left" data-aos-delay="400">SDLC / STLC</span>
+                <span class="skill-tag" data-aos="flip-left" data-aos-delay="500">GitHub</span>
             </div>
 
-            <h3>Təhsil</h3>
-            <div class="edu-item">
+            <h3 data-aos="fade-right">Təhsil</h3>
+            <div class="edu-item" data-aos="fade-left">
                 <strong>Azərbaycan Dövlət Aqrar Universiteti</strong><br>
                 <span>Məzun / Tələbə</span>
             </div>
 
-            <a href="https://www.linkedin.com/in/YOUR_PROFILE" target="_blank" class="contact-btn">LinkedIn ilə əlaqə saxla</a>
+            <a href="#" class="contact-btn" data-aos="fade-up">LinkedIn ilə əlaqə</a>
         </div>
 
         <div class="lang-en">
-            <h3>About Me</h3>
-            <p>I am Rasul, a QA specialist focused on software quality. I have expertise in Manual and Automation testing processes. I perform database verification using SQL and develop test scenarios in accordance with STLC processes.</p>
+            <h3 data-aos="fade-right">About Me</h3>
+            <p>I am Rasul, a QA specialist focused on software quality. I have expertise in Manual and Automation testing processes. I perform database verification using SQL.</p>
 
-            <h3>Skills</h3>
+            <h3 data-aos="fade-right">Skills</h3>
             <div class="skill-group">
                 <span class="skill-tag">Manual Testing</span>
                 <span class="skill-tag">Automation Testing</span>
                 <span class="skill-tag">SQL (Database Testing)</span>
-                <span class="skill-tag">Bug Reporting & Tracking</span>
+                <span class="skill-tag">Bug Reporting</span>
                 <span class="skill-tag">SDLC / STLC</span>
                 <span class="skill-tag">GitHub</span>
             </div>
 
-            <h3>Education</h3>
+            <h3 data-aos="fade-right">Education</h3>
             <div class="edu-item">
                 <strong>Azerbaijan State Agricultural University</strong><br>
                 <span>Graduate / Student</span>
             </div>
 
-            <a href="https://www.linkedin.com/in/YOUR_PROFILE" target="_blank" class="contact-btn">Connect on LinkedIn</a>
+            <a href="#" class="contact-btn">Connect on LinkedIn</a>
         </div>
     </section>
 </div>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+    AOS.init({ duration: 1000, once: true });
+
     function setLanguage(lang) {
         if (lang === 'az') {
             document.querySelectorAll('.lang-az').forEach(el => el.style.display = 'block');
@@ -104,6 +159,7 @@
             document.querySelectorAll('.lang-az').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'block');
         }
+        AOS.refresh(); // Dil dəyişəndə animasiyaları yenilə
     }
 </script>
 
