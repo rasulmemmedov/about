@@ -12,7 +12,7 @@
     
     <style>
         :root { 
-            /* Yeni "Modern Tech" Rəng Palitrası */
+            /* Modern Tech Rəng Palitrası */
             --primary-gradient: linear-gradient(135deg, #3a0ca3, #4361ee, #4cc9f0);
             --deep-navy: #0f172a;
             --electric-blue: #4361ee;
@@ -185,7 +185,6 @@
             color: white;
         }
 
-        /* Həvəskar fəaliyyətlər - Yaradıcı Indigo */
         .hobby-tag {
             background: #fdfaff;
             color: var(--hobby-violet);
@@ -333,7 +332,6 @@
     </div>
     <div class="header-content">
         <h1 data-aos="fade-down" data-aos-duration="1500">Rəsul Məmmədov</h1>
-        <!-- İxtisas yazısı tək formaya salındı -->
         <p data-aos="fade-up" data-aos-delay="400">QA Automation & Manual Tester</p>
     </div>
 </header>
@@ -467,7 +465,7 @@
         if (event.target == modal) closeModal();
     }
 
-    // --- ARXA PLANDA GÜCLÜ "NEON TOR" EFFEKTİ ---
+    // --- CANVAS NEON TOR EFFEKTİ ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -530,6 +528,15 @@
         }
         requestAnimationFrame(animate);
     }
+
+    resize();
+    init();
+    animate();
+</script>
+
+</body>
+</html>
+
 
 
 
